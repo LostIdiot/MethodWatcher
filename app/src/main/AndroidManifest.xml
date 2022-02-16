@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="cn.zz.xposed.methodwatcher">
+
+    <uses-permission
+        android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:ignore="QueryAllPackagesPermission" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:name=".App"
+        android:theme="@style/Theme.MethodWatcher">
+
+        <meta-data
+            android:name="xposedmodule"
+            android:value="true" />
+        <meta-data
+            android:name="xposeddescription"
+            android:value="App method call watcher" />
+        <meta-data
+            android:name="xposedminversion"
+            android:value="82" />
+        <meta-data
+            android:name="xposedscope"
+            android:resource="@array/xposed_scope" />
+
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ui.apps.AppListActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.target.MonitorTargetActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.methods.MonitorMethodsSelectorActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.record.MethodCallRecordsActivity"
+            android:exported="false" />
+
+        <service
+            android:name=".service.MonitorService"
+            android:exported="true" />
+
+        <provider
+            android:authorities="${applicationId}.commonfileprovider"
+            android:name=".extra.provider.CommonFileProvider"
+            android:grantUriPermissions="true"
+            android:exported="false">
+
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/common_file_provider_path" />
+
+        </provider>
+
+    </application>
+
+</manifest>
