@@ -16,4 +16,4 @@ App方法调用监听
 
 ### 添加新的监控方法
 
-在[`WatchedMethod`](app/src/main/java/cn/zz/xposed/methodwatcher/data/MonitorMethod.kt)中按照规则添加新的需要监控的方法即可, 如果需要增加新的方法分组, 则在[`WatchedMethodMethodGroup`](app/src/main/java/cn/zz/xposed/methodwatcher/data/MonitorMethodGroup.kt)中按照规则添加新的分组
+在[`MonitorMethod`](app/src/main/java/cn/zz/xposed/methodwatcher/data/MonitorMethod.kt)中按照规则添加新的需要监控的方法即可, 如果需要增加新的方法分组, 则在[`MonitorMethodGroup`](app/src/main/java/cn/zz/xposed/methodwatcher/data/MonitorMethodGroup.kt)中按照规则添加新的分组
